@@ -1,56 +1,63 @@
-        html {
-            position: relative;
-            min-height: 100%;
-        }
-        
-        body {
-            /* Margin bottom by footer height */
-            margin-bottom: 120px;
-            background-color: #414141;
-        }
-        
-        .footer {
-            position: absolute;
-            bottom: 0;
-            height: 180px;
-            background-color: #212121;
-            width: 100%;
-            color: #FFF;
-        }
-        
-        .footer-bottom {
-            position: absolute;
-            bottom: 0;
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    
+    body {
+        /* Margin bottom by footer height */
+        margin-bottom: 120px;
+        background-color: #414141;
+    }
+    
+    .resizable {
+        width: 100%;
+        height: 100%;
+        /* Magic! */
+        max-width: 100vw;
+    }
+    
+    .footer {
+        position: absolute;
+        bottom: 0;
+        height: 180px;
+        background-color: #212121;
+        width: 100%;
+        color: #FFF;
+    }
+    
+    .footer-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+        background-color: #111111;
+        width: 100%;
+        color: #FFF;
+    }
+    
+    .central-image {
+        background-size: cover;
+        filter: brightness(25%);
+    }
+    
+    .centered {
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: brightness(100%);
+    }
+    
+    @media screen and (max-width: 990px) {
+        .test {
+            position: inherit;
             left: 0;
-            height: 30px;
-            background-color: #111111;
-            width: 100%;
-            color: #FFF;
         }
-        
-        .central-image {
-            background-size: cover;
-            filter: brightness(25%);
-        }
-        
-        .centered {
+    }
+    
+    @media screen and (min-width: 990px) {
+        .test {
             position: absolute;
-            top: 32%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: brightness(100%);
+            right: 0;
         }
-        
-        @media screen and (max-width: 990px) {
-            .test {
-                position: inherit;
-                left: 0;
-            }
-        }
-        
-        @media screen and (min-width: 990px) {
-            .test {
-                position: absolute;
-                right: 0;
-            }
-        }
+    }
