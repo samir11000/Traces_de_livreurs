@@ -1,24 +1,25 @@
-<div class="footer static-bottom">
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col" style="font-weight: bold; font-size: 15px">
-                    Accueil :
-                </div>
-                <div class="col" style="font-weight: bold; font-size: 15px">
-                    Tracking :
-                    <div class="mt-1"><a href="">Carte</a></div>
-                </div>
-                <div class="col" style="font-weight: bold; font-size: 15px">
-                    Rapport :
-                </div>
-                <div class="col" style="font-weight: bold; font-size: 15px">
-                    Gestion :
-                </div>
+<footer class="modern-footer section bg-dark text-white">
+    <div class="container">
+        <div class="row" style="border-bottom: solid grey 3px;">
+            <div class="col-sm-3 mb-4">
+                <h2 class="mb-3">Accueil</h2>
             </div>
-            <div class=" footer-bottom ">
-                <span style="position: absolute;left: 0;bottom: 15% ">
-                  <b class="ml-3" style="font-size: 17px ">Entreprise</b>
-                </span>
+            <div class="col-sm-3 mb-4">
+                <h2 class="mb-3">Rapport</h2>
+            </div>
+            <div class="col-sm-3 mb-4">
+                <h2 class="mb-3">Gestion</h2>
+            </div>
+            <div class="col-sm-3 mb-4">
+                <h2 class="mb-3">Réseaux sociaux</h2>
+                <ul style="list-style-type: none;">
+                    <li><i class="fab fa-facebook mr-3 mb-3" style="font-size: 25px"></i><span style="font-size: 20px">Facebook</span></li>
+                    <li><i class="fab fa-linkedin mr-3 mb-3" style="font-size: 25px"></i><span style="font-size: 20px">Linkedin</span></li>
+                    <li><i class="fab fa-github mr-3 mb-3" style="font-size: 25px"></i><span style="font-size: 20px">Github</span></li>
+                </ul>
             </div>
         </div>
+        <div class="mx-auto mt-4" style="width: 20%;">
+        @ 2019-2020 IUT de Perpignan
     </div>
+</footer>
