@@ -55,17 +55,17 @@
             <div class="col-sm mx-auto mt-5 mb-5">
                 <i class="fas fa-user" style="font-size: 75px; color: blue;"></i>
                 <h2 class="mt-3">Facile d'utilisation</h2>
-                <p class="mr-4 ml-4">L'interface a été pensée pour être le plus ergonomique possible et avec une courbe d'apprentisage basse peu importe le niveau de connaisance de l'utilisateur</p>
+                <p class="mr-4 ml-4" id="short">L'interface a été pensée pour être le plus ergonomique possible et avec une courbe d'apprentisage basse peu importe le niveau de connaisance de l'utilisateur</p>
             </div>
             <div class="col-sm mx-auto mt-5 mb-5">
                 <i class="fas fa-bolt" style="font-size: 75px; color: blue;"></i>
                 <h2 class="mt-3">Rapidité</h2>
-                <p class="mr-4 ml-4">Nous utilisons les dernières technologies de cartographie (leeflet, openlayers) afin d'offrir une expérience fluide et rapide aux utilisateurs</p>
+                <p class="mr-4 ml-4" id="short2">Nous utilisons les dernières technologies de cartographie (leeflet, openlayers) afin d'offrir une expérience fluide et rapide aux utilisateurs</p>
             </div>
             <div class="col-sm mx-auto mt-5 mb-5">
                 <i class="fas fa-school" style="font-size: 75px; color: blue;"></i>
                 <h2 class="mt-3">Projet Scolaire</h2>
-                <p class="mr-4 ml-4">Ceci est un projet scolaire réalisé pendant le temps disponible au cours de la formation, ainsi nous nous excusons si certaines fonctionnalités ne marchent pas entièrement voir ne marchent pas</p>
+                <p class="mr-4 ml-4" id="short3">Ceci est un projet scolaire réalisé pendant le temps disponible au cours de la formation, ainsi nous nous excusons si certaines fonctionnalités ne marchent pas entièrement voir ne marchent pas</p>
             </div>
         </div>
         </div>
@@ -104,6 +104,7 @@
 
     ?>
 </body>
+<script src="js/main.js "></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
 <script src="js/bootstrap.min.js "></script>
