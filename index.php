@@ -36,7 +36,7 @@
                         <a class="nav-link" style="color: white" href="#">Gestion</a>
                     </li>
                     <form class="form-inline test mr-3">
-                        <button class="btn btn-success my-2 my-sm-0 mr-3" type="submit">Connexion</button>
+                        <button class="btn btn-success my-2 my-sm-0 mr-3" type="submit"><a href="connexion.php" style="color: inherit; text-decoration: inherit;">Connexion</a></button>
                         <button class="btn btn-danger my-2 my-sm-0" type="submit">Inscription</button>
                     </form>
                 </ul>
