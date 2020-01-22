@@ -11,8 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="css/all.css" rel="stylesheet">
 </head>
-
 <body id="body">
+<?php 
+    session_start();
+?>
 <div class="bg-img">
     <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
             <a class="navbar-brand" style="color: white" href="index.html">
@@ -36,8 +38,8 @@
                         <a class="nav-link" style="color: white" href="#">Gestion</a>
                     </li>
                     <form class="form-inline test mr-3">
-                        <button class="btn btn-success my-2 my-sm-0 mr-3" type="submit"><a href="connexion.php" style="color: inherit; text-decoration: inherit;">Connexion</a></button>
-                        <button class="btn btn-danger my-2 my-sm-0" type="submit">Inscription</button>
+                    <?php if(isset($_SESSION['locale'])){echo '<span class="mr-3" style="color:#FFFFFF; font-size:1.5em">'.$_SESSION['locale'][1].'</span><span class="fa-stack fa-lg" style="height:3em; width:3em"><i class="fas fa-user fa-stack-1x my-2 mr-3 mt-2" style="color: #FFFFFF; font-size:25px;"></i><i class="far fa-circle fa-stack-2x mt-1" style="font-size:50px; color:#FFFFFF"></i></span>';} else {echo '<button class="btn btn-success my-2 my-sm-0 mr-3" type="submit"><a href="connexion.php" style="color: inherit; text-decoration: inherit;">Connexion</a></button>
+                        <button class="btn btn-danger my-2 my-sm-0" type="submit"><a href="inscription.php" style="color: inherit; text-decoration: inherit;">Inscription</a></button>';} ?>
                     </form>
                 </ul>
             </div>

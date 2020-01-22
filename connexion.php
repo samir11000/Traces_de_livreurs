@@ -25,14 +25,14 @@
         <div style="width:100%">
         <div class="card" style="width: 20rem; margin-left:auto;margin-right:auto;">
             <div class="card-body">
-            <form>
+            <form action="auth/connexion.php" method="POST">
                 <div class="form-group">
                     <label for="EmailOrUsername">Mail ou nom d'utilisateur :</label>
-                    <input type="email" class="form-control" id="EmailOrUsername" aria-describedby="mailorusername">
+                    <input type="text" class="form-control" id="EmailOrUsername" name="username" aria-describedby="mailorusername">
                 </div>
                 <div class="form-group">
                     <label for="pass">Mot de passe :</label>
-                    <input type="password" class="form-control" id="pass" aria-describedby="password">
+                    <input type="password" class="form-control" id="pass" name="pass" aria-describedby="password">
                     <small id="password" class="form-text text-muted">Problème de connexion ? <a href="#">Récupération de mot de passe</a></small>
                 </div>
                     <button type="submit" style="margin-left:30%" class="btn btn-success">Connexion</button>
