@@ -1,6 +1,7 @@
 <?php
 
 include '../assets/connexion_bdd.php';
+include '../assets/config.php';
 
 $username = $password = $confirm_password = $lastname = $firstname = $email = $confirm_email = "";
 $username_err = $password_err = $confirm_password_err = $lastname_err = $firstname_err = $email_err = $confirm_email_err =  "";

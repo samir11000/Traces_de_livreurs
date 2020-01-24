@@ -93,3 +93,59 @@
             right: 0;
         }
     }
+
+.avatar {
+    outline:none;
+    border:none;
+    padding:0;
+    margin:0;
+    background:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    box-shadow:0 1px 3px rgba(0,0,0,.25);
+    border-radius:4px;
+    width:70px;
+    height:70px;
+    flex:none;
+    background-color:#333;
+    background-size:contain
+    ;background-repeat:no-repeat;
+    background-position:50%;
+    display:block;
+}
+
+.avatar--nav2 {
+    width:45px;
+    height:45px;
+    box-shadow:none;
+    border-radius:50%;
+    overflow:hidden;
+    transition:width .3s,height .3s
+}
+
+.avatar-img {
+    background-image: url("../img/users/default-user.png");
+}
+
+.box {
+    position: absolute;
+    width:100%;
+    z-index:999;
+    top:50px;
+}
+
+.login-box__content {
+    box-shadow:0 1px 3px rgba(50,50,50,.25);
+    transform:translateZ(0);
+    position:absolute;
+    top:20px;
+    width:200px;
+    display:flex;
+    flex-direction:column;
+    font-size:12px;
+    overflow:hidden;
+    visibility: hidden;
+    transition:none;
+    color:#999;
+    background-color:#dee2e6;
+}

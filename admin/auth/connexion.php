@@ -1,6 +1,6 @@
 <?php
 
-include '../assets/connexion_bdd.php';
+include '../../assets/connexion_bdd.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -26,15 +26,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $result = pg_execute($connec, "my_querry",array($login));
             $result = pg_fetch_array($result);
 
-            if(password_verify($password, $result['mdp_utilisateur']))
+            if($result['type_utilisateur'] == 1)
             {
-                $connected = TRUE;
-                $_SESSION["locale"] = array($connected,$result['prenom_utilisateur']);
-                echo 'Bienvenue '.$result['prenom_utilisateur'].' !';
-                header('location: ../index.php');
-            } else
+
+                if(password_verify($password, $result['mdp_utilisateur']))
+                {
+                    $connected = TRUE;
+                    $_SESSION["locale"] = array($connected,$result['prenom_utilisateur']);
+                    echo 'Bienvenue '.$result['prenom_utilisateur'].' !';
+                    header('location: ../main.php');
+                } else
+                {
+                    echo 'mot de passe incorect ! ';
+                }
+            }
+            else
             {
-                echo 'mot de passe incorect ! ';
+                echo 'Mauvais mot de passe ou permissions insuffisantes';
             }
         }
     }

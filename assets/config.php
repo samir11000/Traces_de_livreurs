@@ -1,0 +1,3 @@
+<?php
+
+$_SALT = "VAOKkRiEOyQy2iwTEyNhclJHkWziIEsdWFi40oyAqaiwGHAb2khQVXCe33ZAT5DumEnONOEMuoFR0BScJOy2XjpNiy0QDrEhr1Fn";
