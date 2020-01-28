@@ -17,7 +17,7 @@
 ?>
 <div id="bg-img" class="bg-img">
     <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
-            <a class="navbar-brand" style="color: white" href="index.html">
+            <a class="navbar-brand" style="color: white" href="index.php">
                 <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mr-2" alt=""> Uber Camion
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,9 +34,11 @@
                     <li class="nav-item">
                         <a class="nav-link" style="color: white" href="#">Rapport</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white" href="#">Gestion</a>
-                    </li>
+                    <?php
+                    if(isset($_SESSION['locale']) && $_SESSION['locale'][0] == 1){
+                        echo '<li class="nav-item"><a class="nav-link" style="color: white" href="admin/index.php">Administration</a></li>';
+                    }
+                    ?>
                     <!-- <span class="mr-3" style="color:#FFFFFF; font-size:1.5em">'.$_SESSION['locale'][1].'</span> -->
                     <?php if(isset($_SESSION['locale'])){echo '<form class="form-inline test mr-3" style="right:150px"><button type="button" id="user" class="avatar avatar--nav2 avatar-img"></button>';} else {echo '<form class="form-inline test mr-3"><button class="btn btn-success my-2 my-sm-0 mr-3" type="submit"><a href="connexion.php" style="color: inherit; text-decoration: inherit;">Connexion</a></button>
                         <button class="btn btn-danger my-2 my-sm-0" type="submit"><a href="inscription.php" style="color: inherit; text-decoration: inherit;">Inscription</a></button>';} ?>
@@ -46,7 +48,7 @@
         </nav>
         <div class="box">
             <div id="user-box" class="login-box__content" data-visibility="hidden" style="transform: translateX(1165px);right: 1249px; height:300px;">
-            <h3 class="mt-3" style="color:black; text-align:center; padding-bottom:10px;border-bottom:1px black solid;"><?php echo $_SESSION['locale'][1]?></h3>
+            <h3 class="mt-3" style="color:black; text-align:center; padding-bottom:10px;border-bottom:1px black solid;"><?php if(isset($_SESSION['locale'])){ echo $_SESSION['locale'][1];}?></h3>
             <div class="mt-3" style="color:black; text-align:center; padding-bottom:10px;font-size:15px">Mon profile</div>
             <button class="btn btn-danger my-2 my-sm-0 mt-3 text-center" type="submit"><a href="auth/deconnexion.php" style="color: inherit; text-decoration: inherit">Déconnexion</a></button>
             </div>
