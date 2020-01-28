@@ -11,6 +11,13 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
+    <?php
+        session_start();
+        if(isset($_SESSION['locale']))
+        {
+            header('location:main.php');
+        }
+    ?>
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
