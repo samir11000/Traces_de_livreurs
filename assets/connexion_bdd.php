@@ -1,6 +1,6 @@
 <?php
 
-$host = "10.11.159.20";
+$host = "localhost";
 $port = "5432";
 $bdd = "0_traceur_livreur";
 $user = "postgres";

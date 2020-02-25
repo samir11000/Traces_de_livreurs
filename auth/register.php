@@ -2,53 +2,45 @@
 
 include '../assets/connexion_bdd.php';
 include '../assets/config.php';
+include 'users.php';
 
-$username = $password = $confirm_password = $lastname = $firstname = $email = $confirm_email = "";
-$username_err = $password_err = $confirm_password_err = $lastname_err = $firstname_err = $email_err = $confirm_email_err =  "";
+session_start();
 
-var_dump($_POST);
+$user = new registerUser($_POST);
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    if(empty(trim($_POST["lastname"]))){
-        $username_err = "Veuillez rentrer un nom";
-    } else{
-        $lastname = trim($_POST["lastname"]);
+function CheckEmpty($obj,$func,$err)
+{
+    if(empty($func)){
+        $obj->addError($err);
     }
+}
 
-    if(empty(trim($_POST["firstname"]))){
-        $username_err = "Veuillez rentrer un prénom";
-    } else{
-        $firstname = trim($_POST["firstname"]);
-    }
+if($_SERVER["REQUEST_METHOD"] == "POST"){ // Check if the incomming request is a POST request
 
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Veuillez rentrer un nom d'utilisateur";
+    CheckEmpty($user,$user->getLastname(),"Veuillez rentrer un nom.");
+    CheckEmpty($user,$user->getFirstname(),"Veuillez rentrer un prénom.");
+
+    if(empty($user->getLogin())){
+        $user->addError("Veuillez rentrer un login");
     } else{
         // Prepare a select statement
         $sql = 'SELECT id_utilisateur FROM utilisateur WHERE login_utilisateur = $1';
         
         if($stmt = pg_prepare($connec, "my_querry",$sql)){
-            
-            // Set parameters
-            $param_login = trim($_POST["login"]);
 
-            if($result = pg_execute($connec, "my_querry", array($param_login)))
+            if($result = pg_execute($connec, "my_querry", array($user->getLogin())))
             {
                 
-                if(pg_num_rows($result) == 1){
-                    $login_err = "Ce nom d'utilisateur est déjà utilisé";
-                } else{
-                    $login = trim($_POST["login"]);
-                }
+                if(pg_num_rows($result) == 1)
+                    $user->addError("Ce login est déjà utilisé");
             } else{
                 echo "Une erreur est apparue, veuillez réessayer plus tard";
             }
         }
     }
 
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Veuillez rentrer un nom d'utilisateur";
+    if(empty($user->getUsername())){
+        $user->addError("Veuillez rentrer un nom d'utilisateur");
     } else{
         // Prepare a select statement
         $sql = 'SELECT id_utilisateur FROM utilisateur WHERE login_utilisateur = $1';
@@ -58,14 +50,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
             $param_username = trim($_POST["username"]);
 
-            if($result = pg_execute($connec, "my_querry2", array($param_username)))
+            if($result = pg_execute($connec, "my_querry2", array($user->getUsername())))
             {
                 
-                if(pg_num_rows($result) == 1){
-                    $username_err = "Ce nom d'utilisateur est déjà utilisé";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
+                if(pg_num_rows($result) == 1)
+                    $user->addError("Ce nom d'utilisateur est déjà utilisé");
             } else{
                 echo "Une erreur est apparue, veuillez réessayer plus tard";
             }
@@ -73,42 +62,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate password
-    if(empty(trim($_POST["pass"]))){
-        $password_err = "Veuillez rentrer un mot de passe !";     
-    } elseif(strlen(trim($_POST["pass"])) < 6){
-        $password_err = "Le mot de passe doit être d'au moins 6 caractères";
-    } else{
-        $password = trim($_POST["pass"]);
+    if(empty($user->getPass())){
+        $user->addError("Veuillez rentrer un mot de passe !");     
+    } else if(strlen($user->getPass()) < 6){
+        $user->addError("Le mot de passe doit être d'au moins 6 caractères");
     }
     
     // Validate confirm password
-    if(empty(trim($_POST["pass2"]))){
-        $confirm_password_err = "Veuillez confirmer le mot de passe !";     
-    } else{
-        $confirm_password = trim($_POST["pass2"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Les mot de passe ne sont pas les mêmes";
-        }
+    CheckEmpty($user,$user->getConfirmedPass(),"Veuillez confirmer le mot de passe.");
+
+    if($user->getPass() != $user->getConfirmedPass()){
+        $user->addError("Les mot de passe ne sont pas les mêmes");
     }
     
+    var_dump($user);
+
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        
+    if(empty($user->getError())){
         // Prepare an insert statement
         $sql = "INSERT INTO utilisateur (login_utilisateur, mdp_utilisateur, nom_utilisateur, prenom_utilisateur, type_utilisateur) VALUES ($1, $2, $3, $4, 1)";
          
         if($stmt = pg_prepare($connec, "my_querry3",$sql)){
             // Bind variables to the prepared statement as parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_username = $user->getUsername();
+            $param_password = password_hash($user->getPass(), PASSWORD_DEFAULT); // Creates a password hash
 
-            if($result = pg_execute($connec, "my_querry3", array($param_username,$param_password, $lastname, $firstname))){
+            if($result = pg_execute($connec, "my_querry3", array($param_username,$param_password, $user->getLastname(), $user->getFirstname()))){
                 // Redirect to login page
                 header("location: ../index.php");
             } else{
                 echo "Une erreur est apparue, veuillez réessayer plus tard";
             }
         }
+    } else {
+        $_SESSION["register_errors"]=$user->getError();
+        header("location: ../inscription.php");
     }
     
     // Close connection

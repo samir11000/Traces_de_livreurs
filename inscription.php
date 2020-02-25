@@ -1,3 +1,20 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION["register_errors"]))
+{
+    echo "<div class=\"alert alert-danger mt-2\">";
+    foreach($_SESSION["register_errors"] as $value){
+        echo nl2br($value."\n");
+    }
+    echo "</div>";
+}
+
+unset($_SESSION["register_errors"]);
+
+?>
+
 <!DOCTYPE html>
 
 <html>
