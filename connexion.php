@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['locale']))
+{
+    header("location: index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -14,6 +25,7 @@
 
 <body style="background-color:white">
     <div class="container-fluid">
+    <span style="font-size:2rem; position:fixed; bottom:3%;left:3%"><a href="index.php" style="color:black"><i class="fas fa-arrow-left"></i></a></span>
         <div style="width:100%;height:105px;padding-top:32px;padding-bottom:24px;">
             <div style="margin-right:auto; margin-left:auto;text-align:center">
                 <img src="img/logo.png" style="height:48px"/>
