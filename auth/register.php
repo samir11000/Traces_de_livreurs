@@ -4,6 +4,7 @@ include '../assets/connexion_bdd.php';
 include '../assets/config.php';
 include '../assets/users.php';
 include '../assets/querrySimplifier.php';
+include '../assets/emailHandler.php';
 
 session_start();
 
@@ -11,6 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // Check if the incomming request is a
 
     $user = new registerUser($_POST);
     $sql = new querrySimplifier($connec);
+    $emailSender = new emailHandler();
 
     // Check if the given value is empty, if it is, throw the error given
     function CheckEmpty($obj,$func,$err)
@@ -75,9 +77,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // Check if the incomming request is a
         $param_username = $user->getParam("username");
         $param_password = password_hash($user->getParam("password"), PASSWORD_DEFAULT); // Creates a password hash
         // Prepare an insert statement
-        $sql->preparedStatement("INSERT INTO utilisateur (login_utilisateur, mdp_utilisateur, nom_utilisateur, prenom_utilisateur, type_utilisateur) VALUES ($1, $2, $3, $4, 1)",array($param_username,$param_password, $user->getParam("lastname"), $user->getParam("firstname")));
+        $sql->preparedStatement("INSERT INTO utilisateur (login_utilisateur, mdp_utilisateur, nom_utilisateur, prenom_utilisateur, type_utilisateur, email_utilisateur) VALUES ($1, $2, $3, $4, 1, $5)",array($param_username,$param_password, $user->getParam("lastname"), $user->getParam("firstname"), $user->getParam("email")));
         if($sql->getValue()){
             // Redirect to login page
+            $emailSender->welcomeMail($user->getParam("email"));
             header("location: ../index.php");
         } else {
             echo "Une erreur est apparue, veuillez réessayer plus tard";

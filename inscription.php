@@ -28,7 +28,7 @@ unset($_SESSION["register_errors"]);
     <meta charset="UTF-8" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <meta name="viewport" content="width=1000, initial-scale=0.5, height=800px">
+    <meta name="viewport" content="width=device-width, initial-scale=0.3">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="css/all.css" rel="stylesheet">
 </head>
@@ -48,39 +48,39 @@ unset($_SESSION["register_errors"]);
         <div class="card" style="width: 52rem; margin-left:auto;margin-right:auto;height:560px">
             <div class="card-body" style="text-align:left">
                 <div class="row" style="margin-bottom:25px;">
-                        <div class="col">
+                        <div class="col-sm">
                             <?php $form->addTextRow("lastname","lastname","Nom :","lastName") ?>
                         </div>
-                        <div class="col">
+                        <div class="col-sm">
                             <?php $form->addTextRow("firstname","firstname","Prénom :","firsName") ?>
                         </div>
                         
                     </div>
                     <div class="row" style="margin-bottom:25px;">
-                        <div class="col">
+                        <div class="col-sm">
                             <?php $form->addTextRow("login","login","Login :","login") ?>
                         </div>
-                        <div class="col">
+                        <div class="col-sm">
                             <div class="form-group">
                                 <?php $form->addTextRow("username","username","Nom d'utilisateur :","username") ?>
                             </div>
                         </div>
                 </div>
                 <div class="row" style="margin-bottom:25px;">
-                        <div class="col">
+                        <div class="col-sm">
                             <div class="form-group">
                                 <?php $form->addPasswordRow("pass","pass","Mot de passe :","password") ?>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-sm">
                             <?php $form->addPasswordRow("pass2","pass2","Confirmer mot de passe :","passwordConfirmation") ?>
                         </div>
                 </div>
                 <div class="row" style="margin-bottom:25px;">
-                        <div class="col">
+                        <div class="col-sm">
                             <?php $form->addEmailRow("email","email","Adresse E-mail :","mailAddress") ?>
                         </div>
-                        <div class="col">
+                        <div class="col-sm">
                             <?php $form->addEmailRow("email2","email2","Confirmer Adresse E-mail :","mailAddressConfirmation") ?>
                         </div>
                 </div>
