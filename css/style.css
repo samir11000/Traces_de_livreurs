@@ -210,4 +210,9 @@
   }
 
 button:focus{outline:none !important;}
+
+#macarte{
+	height:600px;
+	width:80%;	
+}
  
