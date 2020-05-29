@@ -25,58 +25,51 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <!-- Fullscreen CSS -->
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
-    <!-- MousePosition CSS -->
-    <link rel="stylesheet" href="lib/plugin/Leaflet.MousePosition-master/src/L.Control.MousePosition.css">
+    <!-- MarkerNumbered CSS -->
+    <link rel="stylesheet" href="lib/plugin/Leaflet_numbered_markers/leaflet_numbered_markers.css" />
+    <!-- MarkerCluster CSS -->
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="lib/plugin/GpPluginLeaflet-2.1.5/leaflet/GpPluginLeaflet.css" />
 
-    <!-- Marker CSS -->
-    <link rel="stylesheet" href="lib/plugin/Leaflet.markercluster-master/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="lib/plugin/Leaflet.markercluster-master/dist/MarkerCluster.Default.css" />
-
-
+    <link rel="stylesheet" href="https://makinacorpus.github.io/Leaflet.FileLayer/Font-Awesome/css/font-awesome.min.css" />
 
     <style>
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
+        /*Legend specific*/
+        .legend {
+            padding: 6px 8px;
+            font: 14px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+            /*border-radius: 5px;*/
+            line-height: 24px;
+            color: #555;
         }
 
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
+        .legend h4 {
+            text-align: center;
+            font-size: 16px;
+            margin: 2px 12px 8px;
+            color: #777;
         }
 
-        .sidenav a:hover {
-            color: #f1f1f1;
+        .legend span {
+            position: relative;
+            bottom: 3px;
         }
 
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin: 0 8px 0 0;
+            opacity: 0.7;
         }
 
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-
-            .sidenav a {
-                font-size: 18px;
-            }
+        .legend i.icon {
+            background-size: 18px;
+            background-color: rgba(255, 255, 255, 1);
         }
 
     </style>
@@ -94,97 +87,84 @@
 
             <div class="container-fluid mt-2">
 
-                <button id="loadPoints" type="button" class="btn btn-primary mb-2">Trajet</button>
-                <button type="button" class="btn btn-success mb-2">Camion</button>
-                <button type="button" class="btn btn-secondary mb-2">Client</button>
+                <button id="loadClients" type="button" class="btn btn-primary mb-2">Client</button>
+                <button id="loadVilles" type="button" class="btn btn-primary mb-2">Villes</button>
+                <button id="loadTrajets" type="button" class="btn btn-primary mb-2">Trajets</button>
+                <button id="loadVitesses" type="button" class="btn btn-primary mb-2">Vitesse</button>
+                <button id="geofencing" type="button" class="btn btn-primary mb-2">Geofencing</button>
 
-                <div class="row">
-                    <div class="col-10" id="macarte"></div>
-                    <div class="col-2">
+                <input id="myfiles" multiple type="file">
 
-                        <select>
-                            <option>Choisissez votre requete</option>
-                            <option value="trajet">Trajet</option>
-                            <option value="camion">Camion</option>
-                            <option value="client">Client</option>
-                        </select>
-                        <div class="trajet msg">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Example select</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect2">Example multiple select</label>
-                                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-
-                            </form>
-                        </div>
-                        <div class="camion msg">Vous avez sélectionné le Camion</div>
-                        <div class="client msg">Vous avez sélectionné le Client</div>
-                    </div>
+                <div class="row mt-2">
+                    <div class="carte " id="macarte"></div>
                 </div>
 
-            </div>
+                <div class="row mt-2">
 
+                    <select>
+                        <option>Choisissez votre requete</option>
+                        <option value="client">Clients</option>
+                        <option value="ville">Villes</option>
+                        <option value="trajet">Trajet</option>
+                    </select>
+                </div>
+                
+                <div class="client msg">
+                    <ul id="list1"></ul>
+                </div>
+                <div class="ville msg">
+                    <ul id="list2"></ul>
+                </div>
+                <div class="trajet msg">
+                    <ul id="list3"></ul>
+                </div>
+
+
+            </div>
         </main>
 
     </div>
 
-
+    <!-- Jquery Script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap Script -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-
     <!-- Leaflet Script -->
     <script src="lib/leaflet/leaflet.js"></script>
+
     <!-- Measure Script -->
     <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
     <!-- Geocoder Script -->
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <!-- Turf Script -->
     <script src="lib/turf.js"></script>
-    <!-- Jquery Script -->
-    <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+    <!-- Conf Script -->
     <script src="js/conf.js"></script>
-    <!-- Main Script -->
-    <script src="js/main.js"></script>
     <!-- Fullscreen Script -->
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-    <!-- MousePosition Script -->
-    <script src="lib/plugin/Leaflet.MousePosition-master/src/L.Control.MousePosition.js"></script>
-    <!-- Marker Script -->
-    <script src="lib/plugin/Leaflet.markercluster-master/dist/leaflet.markercluster-src.js"></script>
+    <!-- MarkerNumbered Script -->
+    <script src="lib/plugin/Leaflet_numbered_markers/leaflet_numbered_markers.js"></script>
+    <!-- MarkerCluster Script -->
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js'></script>
 
-    <script src="lib/plugin/leaflet-routing-machine-3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="lib/L.KML.js"></script>
 
+    <script src="https://makinacorpus.github.io/Leaflet.FileLayer/leaflet.filelayer.js">
+    </script>
+    <script src="https://makinacorpus.github.io/Leaflet.FileLayer/togeojson/togeojson.js">
+    </script>
+    <!-- Omnivore Script -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
 
+    <script src="js/querySelect.js"></script>
 
-    <script src="data/geojson1.js"></script>
-    <script src="data/geojson2.js"></script>
-    <script src="data/geojson3.js"></script>
-    <script src="data/geojson4.js"></script>
+    <!-- Geojson Script -->
+    <script src="data/Aude.js"></script>
+    <script src="data/Depot.js"></script>
+    <script src="data/limite_carcassonne.js"></script>
+    <!-- Main Script -->
+    <script src="js/main_map.js"></script>
+
 
     <!-- General Script to call function-->
     <script type="text/javascript">
@@ -204,56 +184,50 @@
         addTileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", "Main");
 
         //Add geoJson Layer
-        addGeoJsonLayer(geojson1, "Iut", {
-            radius: 5,
-            fillColor: "orange",
-            color: "orange",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-        });
-
-        addGeoJsonLayer(geojson2, "Golf", {
+        addGeoJsonLayer(Aude, "Aude", {
             "color": "red",
             fillColor: "none",
             "weight": 5,
             "opacity": 0.65
         });
 
-        addGeoJsonLayer(geojson3, "Cité de Carcassonne", {
-            radius: 5,
-            fillColor: "red",
-            color: "red",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
+        addGeoJsonLayer(Depot, "Depot", {
+            "color": "black",
+            fillColor: "blue",
+            "weight": 1,
+            "opacity": 0.65
         });
 
-        addGeoJsonLayer(geojson4, "Limite département Aude", {
-            "color": "red",
-            fillColor: "none",
-            "weight": 5,
+        addGeoJsonLayer(limite_carcassonne, "Zone 1", {
+            "color": "black",
+            fillColor: "blue",
+            "weight": 1,
             "opacity": 0.65
         });
 
         //Add control layer
         addControlScale();
 
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("select").change(function() {
-                $(this).find("option:selected").each(function() {
-                    var val = $(this).attr("value");
-                    if (val) {
-                        $(".msg").not("." + val).hide();
-                        $("." + val).show();
-                    } else {
-                        $(".msg").hide();
-                    }
-                });
-            }).change();
-        });
+        var fichier;
+
+        var recupererFichiers = function() {
+            var fichiersInput = document.querySelector("#myfiles");
+            var fichiers = fichiersInput.files;
+
+            var nbFichiers = fichiers.length;
+            var i = 0;
+            while (i < nbFichiers) {
+                fichier = fichiers[i];
+                console.log(fichier.name);
+                i++;
+            }
+        }
+
+        // On invoque cette fonction pour chaque modification apportée à l'élément
+        // input
+        document.querySelector("#myfiles").onchange = recupererFichiers;
+
+        omnivore.kml('data/Trajet1305.kml').addTo(map);
 
     </script>
 

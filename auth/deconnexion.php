@@ -13,7 +13,7 @@ if(isset($_SESSION['locale']))
     {
         unset($_COOKIE['auth']);
         setcookie("auth", "", 1, "/");
-        $sql->preparedStatement("UPDATE utilisateur SET auth_token=null WHERE prenom_utilisateur=$1",array($_SESSION['locale'][1]));
+        $sql->preparedStatement("UPDATE utilisateur SET auth_token=null WHERE id_utilisateur=$1",array($_SESSION['locale'][2]));
     }
     $_SESSION = array();
     session_destroy();

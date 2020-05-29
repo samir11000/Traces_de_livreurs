@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(password_verify($password, $result['mdp_utilisateur']))
             {
                 $connected = TRUE;
-                $_SESSION["locale"] = array($connected,$result['nom_utilisateur']);
+                $_SESSION["locale"] = array($connected,$result['nom_utilisateur'],$result['id_utilisateur'],$result['profile_pic']);
                 header('location: ../index.php');
                 unset($result);
             } else

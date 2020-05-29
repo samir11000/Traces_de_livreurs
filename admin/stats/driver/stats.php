@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <link rel="icon" href="../img/favicon.ico" />
-        <title>Tableau de bord - Accueil</title>
+        <link rel="icon" href="../../../img/favicon.ico" />
+        <title>Tableau de bord - Statistiques chauffeur</title>
         <link href="/admin/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -30,7 +30,11 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid mt-2">
-                    <h3>Chauffeurs</h3>
+                    <h3>Livreurs</h3>
+                    <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="../../main.php">Tableau de bord</a></li>
+                            <li class="breadcrumb-item active">Livreurs</li>
+                    </ol>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>

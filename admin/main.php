@@ -34,9 +34,9 @@
                             <li class="breadcrumb-item active">Tableau de bord</li>
                         </ol>
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Nombre de chauffeurs</div>
+                                    <div class="card-body">Nombre de livreurs</div>
                                     <div class="row mb-4">
                                         <div class="col text-center">
                                             <i class="fas fa-male" style="font-size:100px"></i>
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Nombre de camions</div>
                                     <div class="row mb-4">
@@ -63,12 +63,12 @@
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Plus d'informations</a>
+                                        <a class="small text-white stretched-link" href="stats/truck/stats.php">Plus d'informations</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Trajets</div>
                                     <div class="row mb-4">
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Nombre de colis</div>
                                     <div class="row mb-4">
@@ -98,6 +98,23 @@
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">Plus d'informations</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="card bg-danger text-white mb-4" style="background-color:pink !important;">
+                                    <div class="card-body">Nombre de clients</div>
+                                    <div class="row mb-4">
+                                        <div class="col text-center">
+                                            <i class="fas fa-briefcase" style="font-size:100px"></i>
+                                        </div>
+                                        <div class="col">
+                                            <div style="font-size:60px"><?php echo $sql->quickRequest("SELECT COUNT(id_client) as nb_client FROM client;")[0] ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="stats/customer/stats.php">Plus d'informations</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

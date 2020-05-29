@@ -1,23 +1,19 @@
-    html {
-        position: relative;
-        min-height: 100%;
-    }
+html {
+    position: relative;
+     min-height: 100%;
+ }
 
-    .modern-footer {
-        display: flex;
-        position: relative;
-    }
-    
-    body {
+ .modern-footer {
+    display: flex;
+    position: relative;
+}
+
+body {
         background-color: #414141;
     }
 
-    a:hover{
-        text-decoration: none;
-    }
-
-    .section {
-        padding-top: 6rem;
+.section {
+    padding-top: 6rem;
         padding-bottom: 6rem;
     }
 
@@ -154,65 +150,188 @@
     color:#999;
     background-color:#dee2e6;
 }
+#background_acceuil{
+    width:100%;
+    height:1000px;
+    background-image:url(images/camion.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-/* The sidepanel menu */
-.sidepanel {
-    height: 100%; /* Specify a height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 56px;
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-  }
-  
-  /* The sidepanel links */
-  .sidepanel a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidepanel a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidepanel .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  /* Style the button that is used to open the sidepanel */
-  .openbtn {
-    font-size: 20px;
-    z-index: 1;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-  }
-  
-  .openbtn:hover {
-    background-color: #444;
-  }
-
-button:focus{outline:none !important;}
-
-#macarte{
-	height:600px;
-	width:80%;	
 }
- 
+
+#texte_acceuil{
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 300px;
+    float: right;
+    margin-right: 50px;
+
+}
+
+#bouton_acceuil{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bouton_noir{
+    
+    margin-bottom: 100px;
+    width:120px;
+    height:40px;
+    border:1px solid rgb(51, 50, 50);
+    border-radius:10px;
+    background-color: #1fe0;
+    color:black;
+    transition-duration:0.4s;
+    cursor:pointer;
+
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+
+    font-size: small;
+}
+
+.bouton_noir:hover{
+    background-color: rgb(184, 180, 180);
+    border:rgb(184, 180, 180);
+    color:white;
+}
+
+#bloc_service{
+    width: 100%;
+
+    background-image:url(images/bg_service.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.blank{
+    width: 100%;
+    height: 80px;
+}
+#titre_service h1{
+    font-size: 30px;
+    margin-left: 425px;
+    margin-bottom: 60px;
+}
+#presentation_service{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 400px;
+    margin-right: 350px;
+}
+.element{
+    width: 300px;
+    height: 250px;
+    margin-left: 25px;
+    margin-right: 55px;
+    text-align: justify;
+
+}
+.element img{
+    width: 85px;
+    height: 85px;
+}
+.element h1{
+    margin-top: 10px;
+    font-size: 20px;
+}
+.element p{
+    font-size: 15px;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+#bloc_equipe{
+    width: 100%;
+
+    background-image:url(images/bg_equipe.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+#presentation_equipe{
+    display: flex;
+    padding-left: 200px;
+    padding-right: 200px;
+    width: 100%;
+}
+
+#titre_equipe h1{
+    font-size: 30px;
+    margin-left: 425px;
+    margin-bottom: 80px;
+    color: black;
+}
+
+.membre{
+    width: 350px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.membre img{
+    width: 250px;
+    height: 250px;
+
+    border-radius: 150px;
+    border: 1px solid rgb(51, 50, 50);
+    border-style: ridge;
+    overflow: hidden;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    
+}
+
+.membre h1{
+    text-align: center;
+    font-size: 30px;
+}
+
+.membre p{
+    text-align: center;
+}
+
+.btn-linkedin {
+    background: #0E76A8;
+    border-radius: 0;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #084461;
+}
+.btn-linkedin:link, .btn-linkedin:visited {
+    color: #fff;
+}
+.btn-linkedin:active, .btn-linkedin:hover {
+    background: #084461;
+    color: #fff;
+}
+#macarte{
+	height:550px;
+	width:100%;	
+}
+@media only screen and (max-width: 991px) {
+    .mobile-profile{
+        flex-basis: initial;
+    }
+    .mobile-profile2{
+        margin-left: 30%;
+    }
+
+}
