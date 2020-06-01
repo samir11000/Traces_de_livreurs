@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Test GPS</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+    <script src="GPSControl.js"></script>
+    <style>
+        .gps-control a i {
+            padding-top: 3px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Test GPS</h1>
+
+    <div id="map"></div>
+    <div id="msg"></div>
+
+
+    <script>
+        var msg = document.getElementById('msg');
+        var map = L.map('map');
+        map.setZoom(18);
+        new L.TileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
+            minZoom: 5,
+            maxZoom: 20,
+            attribution: '<a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap contributors</a>'
+        }).addTo(map);
+
+        new GPSControl({
+            track: true,
+            activeCallback: active => {
+                msg.innerHTML += 'GPS tracking is active ? ' + active + '<br/>';
+            },
+            successCallback: latlng => {
+                L.marker(latlng).addTo(map);
+                msg.innerHTML += 'GPS tracking detected a position change : ' + latlng + '<br/>';
+                map.setView(latlng);
+            },
+            errorCallback: error => {
+                msg.innerHTML += 'GPS tracking failed : ' + error.message + '<br/>';
+            }
+        }).addTo(map);
+
+        gpsControl.updateActive(true);
+
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .leaflet-container {
+            width: 100%;
+            height: 500px;
+        }
+
+    </style>
+</body>
+
+</html>

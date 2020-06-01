@@ -53,6 +53,9 @@ if (empty($_SESSION))
                         <li class="nav-item">
                             <a class="nav-link" style="color: white" href="tracking.php">Carte</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white" href="test_position.php">Tracking</a>
+                        </li>
 
                         <?php
                     if(isset($_SESSION['locale']) && $_SESSION['locale'][0] == 1){
@@ -62,10 +65,10 @@ if (empty($_SESSION))
                     }
                     ?>
                         <!-- <span class="mr-3" style="color:#FFFFFF; font-size:1.5em">'.$_SESSION['locale'][1].'</span> -->
-                        <?php if(isset($_SESSION['locale'])){echo '<form class="form-inline test mr-3" style="right:150px"><div class="dropdown"><button type="button" id="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar avatar--nav2 avatar-img"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <?php if(isset($_SESSION['locale'])){echo '<form class="form-inline test mr-3" style="right:150px"><div class="dropdown"><button type="button" id="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar avatar--nav2 avatar-img"'; if($_SESSION['locale'][3] != NULL){echo 'style="background-image: url('.$_SESSION['locale'][3].')"';} echo '></button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <p style="text-align:center; text-font:roboto; font-size:1.2rem">'.$_SESSION['locale'][1].'</p>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Mon profile</a>
+    <a class="dropdown-item" href="profil/profil.php">Mon profil</a>
     <div class="dropdown-divider"></div>
     <button type="submit" class="btn btn-danger mt-3 ml-3" style="text-align:center"><a href="auth/deconnexion.php" style="color:white">Déconnexion</button></a>
   </div></div>';} else {echo '<form class="form-inline test mr-3"><button class="btn btn-success my-2 my-sm-0 mr-3" type="submit"><a href="connexion.php" style="color: inherit; text-decoration: inherit;">Connexion</a></button>
@@ -84,8 +87,8 @@ if (empty($_SESSION))
                     <h1>SUIVEZ VOS TRANSPORTS</h1>
                     <p>Avec notre application, suivez en temps réel vos livraisons à travers l'Aude, les SIG au service de la logistique!</p>
                     <div id="bouton_acceuil">
-                        <a href="tracking.php"><button class="bouton_noir" >Carte</button></a>
-                        <a href="#bloc_service"><button class="bouton_noir">En savoir plus</button></a>
+                        <a href="tracking.php"><button type="button" class="bouton btn btn btn-light">Carte</button></a>
+                        <a href="#bloc_service"><button type="button" class="bouton btn btn btn-light">En savoir plus</button></a>
                     </div>
                 </div>
             </div>

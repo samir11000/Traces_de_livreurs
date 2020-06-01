@@ -11,13 +11,18 @@ var featuresPointCollection = null;
 
 $(document).ready(function () {
     //Click on button
+
     $("button#loadClients").click(function () {
+        
         //2eme methode
         $.getJSON("assets/getClients.php", function (response) {
+            
             addGeoJsonLayer1(response, "Clients");
             addList1(response);
             // Set features in featuresPointCollection
             featuresPointCollection = response;
+
+
         });
     });
 
@@ -181,7 +186,7 @@ function addGeoJsonLayer1(geoJsonData, name, style) {
             var Icon = new L.NumberedDivIcon({
                 iconSize: [1, 1],
                 iconAnchor: [1, 1],
-                iconUrl: 'img/clients.png'
+                iconUrl: '/img/clients.png'
             });
 
             return L.marker(latlng, {
@@ -204,7 +209,7 @@ function addGeoJsonLayer2(geoJsonData, name, style) {
                 number: feature.properties.nom_ville,
                 iconSize: [1, 1],
                 iconAnchor: [10, 10],
-                iconUrl: 'img/villes.png'
+                iconUrl: '/img/villes.png'
             });
 
             return L.marker(latlng, {
@@ -226,7 +231,7 @@ function addGeoJsonLayer3(geoJsonData, name, style) {
             var Icon = new L.NumberedDivIcon({
                 iconSize: [1, 1],
                 iconAnchor: [10, 10],
-                iconUrl: 'img/trajets.png'
+                iconUrl: '/img/trajets.png'
             });
 
             return L.marker(latlng, {
@@ -378,7 +383,7 @@ function geofencing(geoJsonData) {
             icon: new L.NumberedDivIcon({
                 iconSize: [1, 1],
                 iconAnchor: [10, 10],
-                iconUrl: 'img/trajets.png'
+                iconUrl: '/img/trajets.png'
             })
         });
         marker.addTo(map)

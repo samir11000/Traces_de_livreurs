@@ -3,15 +3,19 @@
 <html>
 
 <head>
-    <title>Ubber Camion - Tracking</title>
-    <link rel="icon" href="img/favicon.ico" />
     <meta charset="UTF-8" />
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
+-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="img/favicon.ico" />
+    <title>Ubber Camion - Carte visualisation</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 
@@ -88,12 +92,14 @@
             <div class="container-fluid mt-2">
 
                 <button id="loadClients" type="button" class="btn btn-primary mb-2">Client</button>
-                <button id="loadVilles" type="button" class="btn btn-primary mb-2">Villes</button>
-                <button id="loadTrajets" type="button" class="btn btn-primary mb-2">Trajets</button>
-                <button id="loadVitesses" type="button" class="btn btn-primary mb-2">Vitesse</button>
-                <button id="geofencing" type="button" class="btn btn-primary mb-2">Geofencing</button>
-
-                <input id="myfiles" multiple type="file">
+                <button id="loadVilles" type="button" class="btn btn-secondary mb-2">Villes</button>
+                <button id="loadTrajets" type="button" class="btn btn-success mb-2">Trajets</button>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choisir Kml</label>
+                    </div>
+                </div>
 
                 <div class="row mt-2">
                     <div class="carte " id="macarte"></div>
@@ -108,7 +114,7 @@
                         <option value="trajet">Trajet</option>
                     </select>
                 </div>
-                
+
                 <div class="client msg">
                     <ul id="list1"></ul>
                 </div>
@@ -160,6 +166,7 @@
 
     <!-- Geojson Script -->
     <script src="data/Aude.js"></script>
+    <script src="data/samir.js"></script>
     <script src="data/Depot.js"></script>
     <script src="data/limite_carcassonne.js"></script>
     <!-- Main Script -->
@@ -204,6 +211,8 @@
             "weight": 1,
             "opacity": 0.65
         });
+
+        addGeoJsonLayer(samir, "Samir");
 
         //Add control layer
         addControlScale();

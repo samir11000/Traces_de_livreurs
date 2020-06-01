@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
+$host = "postgresql-samir.alwaysdata.net";
 $port = "5432";
-$bdd = "0_traceur_livreur";
-$user = "postgres";
-$pass = "postgres";
+$bdd = "samir_bba";
+$user = "samir";
+$pass = "SamirBBA11";
 
 $connec = pg_connect("host=".$host." port=".$port." dbname=".$bdd." user=".$user." password=".$pass);

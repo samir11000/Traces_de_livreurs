@@ -1,14 +1,13 @@
-<?php
+<?php session_start();
 
-//1. Bdd Connection
-$connexion = "host=127.0.0.1 port=5432 user=postgres password=postgres dbname=0_traceur_livreur";
-$dbconnexion = pg_connect($connexion);
+////1. Bdd Connection
+include 'connexion_bdd.php';
 
 //2. SQL Query
 $sql = 'SELECT id_client as id, nom_client, adresse_client , st_x(ST_Transform(geom,4326)) as lng, st_y(ST_Transform(geom,4326)) as lat FROM client';
 
 //3. Create a resultset
-$result = pg_query($dbconnexion, $sql);
+$result = pg_query($connec, $sql);
 $point = pg_fetch_all($result);
 
 //4. Build GeoJSON feature collection array
